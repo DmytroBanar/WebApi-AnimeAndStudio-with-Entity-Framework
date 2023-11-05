@@ -6,12 +6,12 @@ namespace UnitOfWorkDemo.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FootballTeamController : ControllerBase
+    public class AnimeController : ControllerBase
     {
-        public readonly IFootballTeamService _teamService;
-        public FootballTeamController(IFootballTeamService teamService)
+        public readonly IAnimeService _animeService;
+        public AnimeController(IAnimeService animeService)
         {
-            _teamService = teamService;
+            _animeService = animeService;
         }
 
         /// <summary>
@@ -19,14 +19,14 @@ namespace UnitOfWorkDemo.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> GetTeamList()
+        public async Task<IActionResult> GetAnimeList()
         {
-            var teamDetailsList = await _teamService.GetAllTeams();
-            if(teamDetailsList == null)
+            var animeDetailsList = await _animeService.GetAllAnimes();
+            if(animeDetailsList == null)
             {
                 return NotFound();
             }
-            return Ok(teamDetailsList);
+            return Ok(animeDetailsList);
         }
 
         /// <summary>
@@ -34,14 +34,14 @@ namespace UnitOfWorkDemo.Controllers
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
-        [HttpGet("{teamId}")]
-        public async Task<IActionResult> GetTeamById(int teamId)
+        [HttpGet("{animeId}")]
+        public async Task<IActionResult> GetAnimeById(int animeId)
         {
-            var teamDetails = await _teamService.GetTeamById(teamId);
+            var animeDetails = await _animeService.GetAnimeById(animeId);
 
-            if (teamDetails != null)
+            if (animeDetails != null)
             {
-                return Ok(teamDetails);
+                return Ok(animeDetails);
             }
             else
             {
@@ -55,13 +55,13 @@ namespace UnitOfWorkDemo.Controllers
         /// <param name="productDetails"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> CreateTeam(FootballTeamDetails teamDetails)
+        public async Task<IActionResult> CreateAnime(AnimeDetails animeDetails)
         {
-            var isTeamCreated = await _teamService.CreateTeam(teamDetails);
+            var isAnimeCreated = await _animeService.CreateAnime(animeDetails);
 
-            if (isTeamCreated)
+            if (isAnimeCreated)
             {
-                return Ok(isTeamCreated);
+                return Ok(isAnimeCreated);
             }
             else
             {
@@ -75,14 +75,14 @@ namespace UnitOfWorkDemo.Controllers
         /// <param name="productDetails"></param>
         /// <returns></returns>
         [HttpPut]
-        public async Task<IActionResult> UpdateTeam(FootballTeamDetails teamDetails)
+        public async Task<IActionResult> UpdateAnime(AnimeDetails animeDetails)
         {
-            if (teamDetails != null)
+            if (animeDetails != null)
             {
-                var isTeamCreated = await _teamService.UpdateTeam(teamDetails);
-                if (isTeamCreated)
+                var isAnimeCreated = await _animeService.UpdateAnime(animeDetails);
+                if (isAnimeCreated)
                 {
-                    return Ok(isTeamCreated);
+                    return Ok(isAnimeCreated);
                 }
                 return BadRequest();
             }
@@ -97,14 +97,14 @@ namespace UnitOfWorkDemo.Controllers
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
-        [HttpDelete("{teamId}")]
-        public async Task<IActionResult> DeleteTeam(int teamId)
+        [HttpDelete("{animeId}")]
+        public async Task<IActionResult> DeleteAnime(int animeId)
         {
-            var isTeamCreated = await _teamService.DeleteTeam(teamId);
+            var isAnimeCreated = await _animeService.DeleteAnime(animeId);
 
-            if (isTeamCreated)
+            if (isAnimeCreated)
             {
-                return Ok(isTeamCreated);
+                return Ok(isAnimeCreated);
             }
             else
             {

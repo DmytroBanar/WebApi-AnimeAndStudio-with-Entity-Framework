@@ -9,8 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDIServices(builder.Configuration);
-builder.Services.AddScoped<IFootballTeamService, FootballTeamService>();
-builder.Services.AddScoped<IFootballLeagueService, FootballLeagueService>();
+builder.Services.AddScoped<IAnimeService, AnimeService>();
+builder.Services.AddScoped<IAnimeStudioService, AnimeStudioService>();
 builder.Services.AddDbContext<DbContextClass>(options =>
 {
     string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");

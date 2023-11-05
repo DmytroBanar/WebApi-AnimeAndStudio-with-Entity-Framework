@@ -20,8 +20,8 @@ namespace UnitOfWorkDemo.Infrastructure.ServiceExtension
                 options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
             });
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<IFootballTeamRepository, FootballTeamRepository>();
-            services.AddScoped<IFootballLeagueRepository, FootballLeagueRepository>();
+            services.AddScoped<IAnimeRepository, AnimeRepository>();
+            services.AddScoped<IAnimeStudioRepository, AnimeStudioRepository>();
 
             return services;
         }

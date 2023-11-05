@@ -4,8 +4,8 @@ namespace UnitOfWorkDemo.Core.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        IFootballTeamRepository Teams { get; }
-        IFootballLeagueRepository Leagues { get; }
+        IAnimeRepository Animes { get; }
+        IAnimeStudioRepository Studios { get; }
 
         int Save();
     }

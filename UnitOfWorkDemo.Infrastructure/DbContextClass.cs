@@ -24,7 +24,7 @@ namespace UnitOfWorkDemo.Infrastructure
         //    optionsBuilder.UseSqlite("Data Source=helloapp.db");
         //}
 
-        public DbSet<FootballTeamDetails> Teams { get; set; }
-        public DbSet<FootballLeagueDetails> Leagues { get; set; }
+        public DbSet<AnimeDetails> Animes { get; set; }
+        public DbSet<AnimeStudioDetails> Studios { get; set; }
     }
 }

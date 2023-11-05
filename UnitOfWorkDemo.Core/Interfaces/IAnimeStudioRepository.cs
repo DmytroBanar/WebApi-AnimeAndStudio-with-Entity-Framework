@@ -2,7 +2,7 @@
 
 namespace UnitOfWorkDemo.Core.Interfaces
 {
-    public interface IFootballTeamRepository : IGenericRepository<FootballTeamDetails>
+    public interface IAnimeStudioRepository : IGenericRepository<AnimeStudioDetails>
     {
     }
 }

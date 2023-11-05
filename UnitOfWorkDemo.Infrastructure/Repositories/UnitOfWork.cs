@@ -10,14 +10,14 @@ namespace UnitOfWorkDemo.Infrastructure.Repositories
     public class UnitOfWork : IUnitOfWork
     {
         private readonly DbContextClass _dbContext;
-        public IFootballTeamRepository Teams { get; }
-        public IFootballLeagueRepository Leagues { get; }
+        public IAnimeRepository Animes { get; }
+        public IAnimeStudioRepository Studios { get; }
 
-        public UnitOfWork(DbContextClass dbContext, IFootballTeamRepository teamRepository, IFootballLeagueRepository leagueRepository)
+        public UnitOfWork(DbContextClass dbContext, IAnimeRepository animeRepository, IAnimeStudioRepository studioRepository)
         {
             _dbContext = dbContext;
-            Teams = teamRepository;
-            Leagues = leagueRepository;
+            Animes = animeRepository;
+            Studios = studioRepository;
         }
 
         public int Save()
@@ -42,24 +42,24 @@ namespace UnitOfWorkDemo.Infrastructure.Repositories
     public class UnitOfWorkFactory
     {
         private readonly DbContextClass _dbContext;
-        private readonly IFootballTeamRepository _teamRepository;
-        private readonly IFootballLeagueRepository _leagueRepository;
+        private readonly IAnimeRepository _animeRepository;
+        private readonly IAnimeStudioRepository _studioRepository;
 
-        public UnitOfWorkFactory(DbContextClass dbContext, IFootballTeamRepository teamRepository, IFootballLeagueRepository leagueRepository)
+        public UnitOfWorkFactory(DbContextClass dbContext, IAnimeRepository animeRepository, IAnimeStudioRepository studioRepository)
         {
             _dbContext = dbContext;
-            _teamRepository = teamRepository;
-            _leagueRepository = leagueRepository;
+            _animeRepository = animeRepository;
+            _studioRepository = studioRepository;
         }
 
         public IUnitOfWork CreateTeamUnitOfWork()
         {
-            return new UnitOfWork(_dbContext, _teamRepository, _leagueRepository);
+            return new UnitOfWork(_dbContext, _animeRepository, _studioRepository);
         }
 
         public IUnitOfWork CreateLeagueUnitOfWork()
         {
-            return new UnitOfWork(_dbContext, _teamRepository, _leagueRepository);
+            return new UnitOfWork(_dbContext, _animeRepository, _studioRepository);
         }
     }
 
